@@ -3,5 +3,6 @@
         "Blockride",
         "Solana",
         "waitlist"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }
