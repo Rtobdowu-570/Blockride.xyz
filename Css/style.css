@@ -369,10 +369,12 @@ a:hover {
     text-align: center;
     padding: 60px 40px;
     margin: 0 auto;
-    background: linear-gradient(135deg, #000 0%, #111 100%);
-    min-height: 80vh;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(254, 153, 31, 0.15), transparent 70%), #000000;
+    min-height: 100vh;
     position: relative;
     gap: 40px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .content::before {
@@ -382,8 +384,28 @@ a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(254, 153, 31, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 30% 50%, rgba(254, 153, 31, 0.08) 0%, transparent 50%);
     pointer-events: none;
+    z-index: 1;
+}
+
+.content::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    right: -10%;
+    height: 40%;
+    background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(254, 153, 31, 0.1), transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(1px);
+}
+
+/* Ensure content children are above background layers */
+.content > * {
+    position: relative;
+    z-index: 2;
 }
 
 .content-left h1{
